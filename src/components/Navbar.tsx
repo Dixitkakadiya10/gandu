@@ -1,15 +1,17 @@
 
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, ChefHat, LogOut, User } from "lucide-react";
+import { Menu, X, ChefHat, LogOut, User, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import ProfileSetupModal from "./ProfileSetupModal";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [userData, setUserData] = useState<{ name: string, role: string } | null>(null);
   const navigate = useNavigate();
+  const [showProfileSetup, setShowProfileSetup] = useState(false);
 
   useEffect(() => {
     // Check authentication status on component mount and when localStorage changes
@@ -53,8 +55,9 @@ const Navbar = () => {
   };
   
   const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    localStorage.removeItem("user");
+    // localStorage.removeItem("isAuthenticated");
+    // localStorage.removeItem("user");
+    localStorage.clear();
     setIsAuthenticated(false);
     setUserData(null);
     toast.success("Logged out successfully!");
@@ -72,6 +75,10 @@ const Navbar = () => {
       default:
         return "/customer";
     }
+  };
+
+  const handleProfileSetupComplete = () => {
+    setShowProfileSetup(false);
   };
 
   return (
@@ -96,6 +103,15 @@ const Navbar = () => {
                 <Link to={getUserDashboard()} className="px-3 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-bistro-600">
                   My Dashboard
                 </Link>
+                {
+                  !localStorage.getItem("userAddress") &&
+                  <Link to={''} onClick={()=>{
+                    setShowProfileSetup(true)
+                  }} className="ml-4 flex items-center px-3 py-2 rounded-md text-sm font-medium text-yellow-500 hover:text-yellow-700">
+                    {/* <User2 className="mr-1 h-4 w-4" /> */}
+                    Complete Profile !
+                  </Link>
+                }
                 <div className="px-3 py-2 rounded-md text-sm font-medium text-bistro-600">
                   Welcome, {userData?.name || "User"}!
                 </div>
@@ -175,7 +191,12 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      <ProfileSetupModal 
+        open={showProfileSetup} 
+        onClose={handleProfileSetupComplete} 
+      />
     </header>
+    
   );
 };
 

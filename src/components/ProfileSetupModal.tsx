@@ -37,7 +37,7 @@ const ProfileSetupModal = ({ open, onClose }: { open: boolean; onClose: () => vo
 
     const savedProfilePicture = localStorage.getItem("profilePicture");
     if (savedProfilePicture) setProfilePicture(savedProfilePicture);
-  }, []);
+  }, [open]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
