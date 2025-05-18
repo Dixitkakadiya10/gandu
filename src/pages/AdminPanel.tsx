@@ -78,7 +78,7 @@ const AdminPanel = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Revenue</p>
-                  <h2 className="text-2xl font-bold">$13,489.75</h2>
+                  <h2 className="text-2xl font-bold">€13,489.75</h2>
                   <p className="text-xs text-green-500 mt-1">+8.2% from last month</p>
                 </div>
                 <div className="p-3 bg-primary/10 rounded-full">
@@ -109,7 +109,7 @@ const AdminPanel = () => {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis />
-                      <Tooltip formatter={(value) => `$${value}`} />
+                      <Tooltip formatter={(value) => `€{value}`} />
                       <Legend />
                       <Bar dataKey="total" name="Revenue" fill="#3b82f6" />
                     </BarChart>
@@ -131,7 +131,7 @@ const AdminPanel = () => {
                           <p className="text-sm text-gray-500">Customer: John Doe</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-semibold">${(Math.random() * 100 + 20).toFixed(2)}</p>
+                          <p className="font-semibold">€{(Math.random() * 100 + 20).toFixed(2)}</p>
                           <p className="text-xs text-green-500">Completed</p>
                         </div>
                       </div>
@@ -206,7 +206,7 @@ const AdminPanel = () => {
                           <td className="px-6 py-4 whitespace-nowrap">{user.name}</td>
                           <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full €{
                               user.role === "Admin" ? "bg-purple-100 text-purple-800" :
                               user.role === "Chef" ? "bg-blue-100 text-blue-800" :
                               "bg-green-100 text-green-800"
@@ -215,7 +215,7 @@ const AdminPanel = () => {
                             </span>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full €{
                               user.status === "Active" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"
                             }`}>
                               {user.status}

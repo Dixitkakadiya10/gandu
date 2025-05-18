@@ -197,7 +197,7 @@ const CustomerPanel = () => {
 
   // Handle tab switching
   const handleTabSwitch = (tab: string) => {
-    const tabElement = document.querySelector(`[data-value="${tab}"]`);
+    const tabElement = document.querySelector(`[data-value="€{tab}"]`);
     if (tabElement) {
       (tabElement as HTMLElement).click();
     }
@@ -232,12 +232,12 @@ const CustomerPanel = () => {
       chef: meal.chef,
       image: meal.image
     });
-    toast.success(`${meal.name} added to cart!`);
+    toast.success(`€{meal.name} added to cart!`);
   };
 
   // Handle viewing order details
   const handleViewOrderDetails = (orderId: number) => {
-    toast.info(`Viewing details for order #${orderId}`);
+    toast.info(`Viewing details for order #€{orderId}`);
     // In a real app, this would show a modal or navigate to an order details page
   };
 
@@ -346,7 +346,7 @@ const CustomerPanel = () => {
                           </div>
                         </div>
                         <div className="mt-4 flex justify-between items-center">
-                          <span className="font-bold text-lg">${meal.price}</span>
+                          <span className="font-bold text-lg">€{meal.price}</span>
                           <Button 
                             className="bg-bistro-600 hover:bg-bistro-700"
                             onClick={() => handleAddToCart(meal)}
@@ -395,7 +395,7 @@ const CustomerPanel = () => {
                           <div className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium">
                             {order.status}
                           </div>
-                          <p className="mt-2 text-right font-semibold">${order.total.toFixed(2)}</p>
+                          <p className="mt-2 text-right font-semibold">€{order.total.toFixed(2)}</p>
                         </div>
                       </div>
                       <div className="mt-4 flex justify-end space-x-2">

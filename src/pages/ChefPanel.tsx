@@ -213,7 +213,7 @@ const ChefPanel = () => {
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-500">Today's Earnings</p>
-                  <p className="text-2xl font-semibold">${earnings.today}</p>
+                  <p className="text-2xl font-semibold">€{earnings.today}</p>
                 </div>
               </div>
             </CardContent>
@@ -281,7 +281,7 @@ const ChefPanel = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {meals.map((meal) => (
-                <Card key={meal.id} className={`overflow-hidden ${!meal.available ? 'opacity-70' : ''}`}>
+                <Card key={meal.id} className={`overflow-hidden €{!meal.available ? 'opacity-70' : ''}`}>
                   <div className="relative h-48">
                     <img 
                       src={meal.image} 
@@ -302,7 +302,7 @@ const ChefPanel = () => {
                       <p className="text-sm text-gray-600 mt-1">{meal.description}</p>
                     </div>
                     <div className="mt-4 flex justify-between items-center">
-                      <span className="font-bold text-lg">${meal.price}</span>
+                      <span className="font-bold text-lg">€{meal.price}</span>
                       <div className="flex space-x-2">
                         <Button variant="outline" size="sm" className="p-2">
                           <Edit className="h-4 w-4" />
@@ -344,14 +344,14 @@ const ChefPanel = () => {
                         </div>
                       </div>
                       <div>
-                        <div className={`px-3 py-1 rounded-full text-sm font-medium ${
+                        <div className={`px-3 py-1 rounded-full text-sm font-medium €{
                           order.status === 'Processing' ? 'bg-blue-50 text-blue-700' :
                           order.status === 'Ready' ? 'bg-yellow-50 text-yellow-700' :
                           'bg-green-50 text-green-700'
                         }`}>
                           {order.status}
                         </div>
-                        <p className="mt-2 text-right font-semibold">${order.total.toFixed(2)}</p>
+                        <p className="mt-2 text-right font-semibold">€{order.total.toFixed(2)}</p>
                       </div>
                     </div>
                     <div className="mt-4 flex justify-end space-x-2">
@@ -409,19 +409,19 @@ const ChefPanel = () => {
                     <div className="space-y-6">
                       <div className="flex justify-between items-center pb-4 border-b">
                         <p className="text-gray-600">Today</p>
-                        <p className="font-semibold">${earnings.today}</p>
+                        <p className="font-semibold">€{earnings.today}</p>
                       </div>
                       <div className="flex justify-between items-center pb-4 border-b">
                         <p className="text-gray-600">This Week</p>
-                        <p className="font-semibold">${earnings.week}</p>
+                        <p className="font-semibold">€{earnings.week}</p>
                       </div>
                       <div className="flex justify-between items-center pb-4 border-b">
                         <p className="text-gray-600">This Month</p>
-                        <p className="font-semibold">${earnings.month}</p>
+                        <p className="font-semibold">€{earnings.month}</p>
                       </div>
                       <div className="flex justify-between items-center pt-2">
                         <p className="text-gray-900 font-medium">Total Earnings</p>
-                        <p className="text-2xl font-bold text-bistro-700">${earnings.total}</p>
+                        <p className="text-2xl font-bold text-bistro-700">€{earnings.total}</p>
                       </div>
                     </div>
                   </CardContent>
